@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple E-commerce Website</title>
+  <style>
+   body,html { 
+	margin:0; 
+	font-family:Arial, sans-serif; }
+   nav { 
+	background-color:#333; 
+	color:white; 
+	padding:1em; 
+	display:flex; 
+	justify-content:space-between; 
+	align-items:center; }
+   nav ul { 
+	list-style:none; 
+	display:flex; 
+	margin:0; 
+	padding:0; }
+   nav ul li { 
+	margin-right:15px; }
+   nav ul li a { 
+	color:white; 
+	text-decoration:none; }
+   .container { 
+	padding:2em; 
+	display:none; }
+   .show { 
+	display: block; }
+   .carousel, .footer { 
+	background: #ddd; 
+	padding: 1em; 
+	text-align: center; }
+   .products, .billing { 
+	display: flex; 
+	flex-wrap: wrap; 
+	gap: 25px; }
+   .product { 
+	background:#f4f4f4; 
+	padding:2em; 
+	text-align:center; 
+	width:calc(33.33% - 25px); }
+   .product img { 
+	width: 100%; 
+	height: auto; }
+   .btn { 
+	padding: 10px; 
+	margin-top: 10px; 
+	background-color: #28a745; 
+	color: white; 
+	border: none; 
+	cursor: pointer; }
+   .footer { 
+	margin-top:20px; }
+   .modal { 
+	display:none; 
+	position:fixed; 
+	top:0; 
+	left:0; 
+	width:100%; 
+	height:100%; 
+	background:rgba(0,0,0,0.5); 
+	justify-content:center; 
+	align-items:center; }
+   .modal-content { 
+	background:white; 
+	padding:20px; 
+	width:300px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div>E-COMMERCE</div>
+  <ul>
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('women')">Women’s World</a></li>
+    <li><a href="#" onclick="showPage('men')">Men’s World</a></li>
+    <li><a href="#" onclick="showPage('accessories')">Accessories</a></li>
+    <li><a href="#" onclick="showPage('billing')">Billing</a></li>
+    <li><a href="#" onclick="toggleModal('loginModal')">Login</a></li>
+  </ul>
+</nav>
+
+
+<div id="home" class="container show">
+  <div class="carousel"><h2>Welcome to Our Store! Enjoy Shopping.</h2></div>
+  <img src="https://tse3.mm.bing.net/th?id=OIP.zOQEjy6gq7QyUPNDLNaKzQHaEo&pid=Api&P=0&h=220" width="1200px"   height="700px"><br>
+  <center>
+  <button class="btn" onclick="toggleModal('loginModal')">Login</button>
+  <button class="btn" onclick="logout()">Logout</button>
+  </center>
+  <div class="footer">
+  <div>&copy; 2024 Our Store. All Rights Reserved.</div>
+  <div>
+    <p>Contact Us: support@ourstore.com | Phone: (123) 456-7890</p>
+    <p>Follow Us on Social Media:</p>
+    <a href="#" target="_blank">Facebook</a> | 
+    <a href="#" target="_blank">Instagram</a> | 
+    <a href="#" target="_blank">Twitter</a> | 
+    <a href="#" target="_blank">LinkedIn</a>
+  </div>
+  <div>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Returns & Refunds</a></p>
+  </div>
+  </div>
+</div>
+
+<!--About-->
+
+<div id="about" class="container">
+  <h2>About Us</h2>
+  <p>Welcome to <strong>My E-commerce Store</strong>! We’re dedicated to bringing you the latest in fashion, accessories, and lifestyle products, all in one place. Our goal is to make shopping easy, accessible, and enjoyable for everyone.</p>
+  
+  <h3>Our Mission</h3>
+  <p>Our mission is to empower individuals by offering a curated selection of high-quality, trendy products at affordable prices. We believe in style, quality, and sustainability, and we strive to source products that reflect these values.</p>
+  
+  <h3>Why Choose Us?</h3>
+  <ul>
+    <li><strong>Wide Selection:</strong> We offer a diverse range of products for men, women, and even unique accessories, so you’re sure to find something that fits your style.</li>
+    <li><strong>Quality Assurance:</strong> Each item in our store is carefully vetted to ensure that it meets our high standards for quality and durability.</li>
+    <li><strong>Customer Satisfaction:</strong> We’re here to make sure you’re happy with every purchase. Our customer support team is ready to assist you with any questions or concerns.</li>
+  </ul>
+
+  <h3>Our Story</h3>
+  <p>Founded in 2024, <strong>My E-commerce Store</strong> started as a small online shop with a big vision. Over the years, we’ve grown to become a trusted destination for quality fashion and lifestyle products. We’re proud to have built a community of loyal customers who trust us for all their shopping needs.</p>
+
+  <p>Thank you for choosing us as your preferred shopping destination. We’re excited to have you as part of our journey and look forward to providing you with an exceptional shopping experience!</p>
+</div>
+
+  </div>
+
+<! -- pages -->
+
+<div id="women" class="container">
+  <h2>Women's World</h2>
+  <div class="products">
+    <div class="product">
+      <img src="womens dress.jpg" alt="Women's Product 1">
+      <p>Women's Dress : $10</p>
+      <button class="btn" onclick="addToCart('Women\'s Dress')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="C:\Users\krish\Desktop\html\Project- 1 (E-COMMERCE)\handbag.jpg" alt="Women's Product 2">
+      <p>Handbag : $10</p>
+      <button class="btn" onclick="addToCart('Handbag')">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div id="men" class="container">
+  <h2>Men's World</h2>
+  <div class="products">
+    <div class="product">
+      <img src="mens jacket.jpg" alt="Men's Product 1">
+      <p>Men's Jacket : $10</p>
+      <button class="btn" onclick="addToCart('Men\'s Jacket')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="watches.jpg" alt="Men's Product 2">
+      <p>Watch : $10</p>
+      <button class="btn" onclick="addToCart('Watch')">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div id="accessories" class="container">
+  <h2>Accessories</h2>
+  <div class="products">
+    <div class="product">
+      <img src="sunglasses.jpg" alt="Accessory 1">
+      <p>Sunglasses : $10</p>
+      <button class="btn" onclick="addToCart('Sunglasses')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="scarf.jpg" alt="Accessory 2">
+      <p>Scarf : $10</p>
+      <button class="btn" onclick="addToCart('Scarf')">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div id="billing" class="container">
+  <h2>Billing Page</h2>
+  <div class="billing">
+    <div>
+      <p>Total: $<span id="totalPrice">0</span></p>
+      <button class="btn" onclick="confirmOrder()">Confirm Order</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Login Modal -->
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+    <button class="btn" onclick="login()">Login</button>
+    <button class="btn" onclick="toggleModal('loginModal')">Close</button>
+  </div>
+</div>
+
+<script>
+  let totalPrice = 0;
+
+  function showPage(pageId) {
+    document.querySelectorAll('.container').forEach(page => page.classList.remove('show'));
+    document.getElementById(pageId).classList.add('show');
+  }
+
+  function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function login() {
+    alert('Logged in successfully!');
+    toggleModal('loginModal');
+  }
+
+  function logout() {
+    alert('Logged out successfully!');
+  }
+
+  function addToCart(product) {
+    alert(product + ' added to cart');
+    totalPrice += 10; 
+    document.getElementById('totalPrice').innerText = totalPrice;
+  }
+
+  function confirmOrder() {
+    alert('Order confirmed! Total: $' + totalPrice);
+    totalPrice = 0;
+    document.getElementById('totalPrice').innerText = totalPrice;
+  }
+</script>
+
+</body>
+</html>
